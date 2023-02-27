@@ -22,7 +22,13 @@ const transactionSchema = new mongoose.Schema({
 const Transaction = mongoose.model('Transaction', transactionSchema);
 
 class TransactionService {
-  static async createTransaction(cuentaExternoIdDebit, cuentaExternoIdCredito, transferTypeId, valor, estado) {
+  static async createTransaction(cuentaExternoIdDebit, cuentaExternoIdCredito, transferTypeId, valor, estadoTransaccion) {
+    let estadoTransaccion = 'pendiente';
+
+    if (valor > 1000) {
+      estadoTransaccion = 'rechazado';
+    }
+
     const transaction = {
       transactionExternalId: uuidv4(),
       cuentaExternoIdDebit,
@@ -30,9 +36,10 @@ class TransactionService {
       transferTypeId,
       valor,
       tipoTransaccion: 'normal',
-      estadoTransaccion: estado,
+      estadoTransaccion,
       creadoEn: new Date()
     };
+
 
     // Publicar un mensaje en el topic de Kafka 'transactions' para que sea validado por el servicio de antifraude
     const kafka = new Kafka({
