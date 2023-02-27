@@ -1,0 +1,26 @@
+{
+  "name": "app-nodejs-codechallenge",
+  "version": "1.0.0",
+  "description": "Our code challenge will let you marvel us with your Jedi coding skills :smile:.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jramirezch1978/app-nodejs-codechallenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jramirezch1978/app-nodejs-codechallenge/issues"
+  },
+  "homepage": "https://github.com/jramirezch1978/app-nodejs-codechallenge#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "kafkajs": "^2.2.3",
+    "mongoose": "^6.10.0"
+  }
+}
